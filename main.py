@@ -10,22 +10,8 @@ import numpy as np
 import torch
 import os
 
-def set_seed(seed=42):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-
-    # Ensures deterministic behavior
-    torch.backends.cudnn.benchmark = False
-
-    os.environ["PYTHONHASHSEED"] = str(seed)
-
-    print(f"Seed set to {seed}")
 
 def main(mode):
-    set_seed(42)
     train_samples, val_samples, test_samples = load_data("./data")
 
     if mode == "simclr_resnet18":
